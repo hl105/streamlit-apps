@@ -1,0 +1,49 @@
+Rank,News Source,Year Founded,Main Medium,Local v National,Owner,Alexa Ranking (US),Political Bias Score
+9,NBC news,1940,television ,national,"NBCUniversal: NBCUniversal Broadcast, Cable, Sports and News",193,-0.1558
+10,USA Today,1982,newspaper,national,Gannett,134,0.0582
+11,CNBC,1989,television,national,"NBCUniversal: NBCUniversal Broadcast, Cable, Sports and News",131,0.0811
+12,Newsweek,1933,magazine,national,Newsweek (independent),527,-0.4096
+13,Breitbart News,2007,online-only,national,"Breitbart News Network, LLC",69,0.7419
+14,The Daily Beast,2008,online-only,national,IAC ,369,-0.3825
+15,Vox,2014,online-only,national,Vox Media,409,-0.5546
+16,Youtube,2005,online-only,national,Google LLC,2,0.1282
+17,ABC News,1945,television,national,American Broadcasting Company,365,-0.0384
+18,CNSNews,1998,online-only,national,Media Research Center,332,-0.017
+19,National Review,1995,magazine,national,National Review Institute,"1,408",0.6361
+20,Slate,1996,magazine,national,The Slate Group,558,-0.5108
+21,The Week,2001,magazine ,national,The Week Publications,"2,066",-0.1771
+22,MSNBC,1996,television,national,"NBCUniversal: NBCUniversal Broadcast, Cable, Sports and News",711,-0.6243
+23,The Wall Street Journal,1889,newspaper,national,News Corp: Dow Jones & Company,182,0.0106
+24,Bloomberg,1981,television,national,Bloomberg L.P.,204,-0.3121
+25,Yahoo,1996,online-only,national,Verizon Media,5,-0.3361
+26,Axios,2017,online-only,national,Axios Media Inc.,"1,384",-0.0792
+27,Wmur,2010,television,local ,Hearst Television,"5,032",0.0558
+28,Busiess Insider,2009,online-only,national,Insider Inc.: Axel Springer SE,89,0.1866
+29,Yahoo Finance,1997,online-only,national,Verizon Media,5,-0.0373
+30,The Atlantic,1857,magazine,national,Laurene Powell Jobs,517,0.1467
+31,LA Times,1881,newspaper,local,Los Angeles Times Communications LLC,357,-0.4148
+32,AP News,1941,news agency,national,Associated Press (AP),578,-0.261
+33,Daily Caller,2010,online-only,national,"The Daily Caller, Inc.",251,-0.3279
+34,AOL,1985,online-only,national,"Verizon Media, AOL Holdings LLC",116,-0.3452
+35,The Des Moines Register,1849,newspaper,local,Gannett,"7,422",0.6062
+36,Boston Globe,1872,newspaper,local,"Boston Globe Media Partners, LLC","1,541",0.6958
+37,Washington Times,1982,newspaper,local,News World Communications,"1,691",0.005
+38,Real Clear Politics,2000,online-only,national,"RealClearInvestors, Crest Media",466,-0.8336
+39,NY Daily News,1919,newspaper,local,Tribune Publishing,623,0.2004
+40,Common Dreams,1997,online-only,national,Independent,"2,483",-0.5926
+41,Salon,1995,online-only,national,"Salon.com, LLC","1,106",-0.1287
+42,Fox Business,2007,television,national,Fox Corporation,793,0.568
+43,Splinter News,2017,online-only,national,G/O Media,"48,863",0.6297
+44,Reuters,1851,news agency,national,Thomas Reuters,325,-0.254
+45,Huffington Post,2005,online-only,national,AOL,190,-0.6526
+46,Market Watch,1997,online-only,national,Dow Jones & Company,212,0.2847
+47,Yahoo News,1996,online-only,national,Verizon Media,5,0.0848
+48,Mother Jones,1976,magazine,national,Foundation for National Progress,"3,421",-0.6966
+49,npr,1971,television,national,"National Public Radio, Inc.",196,-0.4161
+50,Boston Herald,1846,newspaper,local,Digital First Media,"5,253",0.0754
+51,Rolling Stone ,1967,magazine,national,Penske Media Corporation,502,-0.3875
+52,The Dallas Morning News,1885,newspapaer,local,A.H. Belo Corporation,"1,849",-0.2175
+53,The Washington Free Beacon,2012,online-only,national,Mathew Continetti,"7,506",0.7926
+54,Mediaite,2009,online-only,national,Abrams Media,"1,324",0.1359
+55,Seattle Times,1891,newspaper,local,The Seattle Times Company,"1,820",-0.2764
+56,Deadline,2006,online-only,local,Penske Media Corporation,859,-0.2054

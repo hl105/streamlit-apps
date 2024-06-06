@@ -1,0 +1,9 @@
+Rank,News Source,Year Founded,Main Medium,Local v National,Owner,Alexa Ranking (US),Political Bias Score
+1,The Hill,1994,online,national,News Communications Inc: Capitol Hill Publishing,367,-0.06
+2,CNN,1980,television ,national,AT&T: WarnerMedia,25,-0.1183
+3,Fox News,1996,television ,national,Fox Corporation: Fox News Group,66,0.6079
+4,Politico,2007,online,national,Capitol News Company,364,-0.1914
+5,Washington Post,1877,newspaper,local,Nash Holdings,68,-0.2342
+6,Washington Examiner,2005,magazine,national,Clarity Media Group: Media DC,"1,194",0.5399
+7,NY Post,1801,newspaper,local,News Corp,177,0.1813
+8,NY Times,1851,newspaper,national,The New York Times Company,29,-0.2602

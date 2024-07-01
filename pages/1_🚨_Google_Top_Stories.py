@@ -1,16 +1,10 @@
 import streamlit as st
-
-st.markdown("Google Top Stories: 2020 Elections breakdown by Candidate")
-st.sidebar.markdown("# main page: by candidate")
-
-import streamlit as st
 import pandas as pd
-import numpy as np
 import os
 from collections import Counter
 
-
-
+st.set_page_config(page_title="Google Top Stories", page_icon="🚨")
+st.markdown("Google Top Stories: 2020 Elections breakdown by Candidate")
 st.title('2020 Elections Google Top Stories')
 
 option = st.selectbox(

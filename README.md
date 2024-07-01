@@ -1,2 +1,2 @@
-# Streamlit-Google-Top-Stories-2020
+# Streamlit-Data-Visualization
 Data visualization application using pure python with [Streamlit](https://streamlit.io/cloud). Results can be found here: [https://johanna.streamlit.app/](https://johanna.streamlit.app/). 

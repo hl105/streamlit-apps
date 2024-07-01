@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Landing Page", page_icon="👋")
 
 st.markdown("Landing Page")
-st.title("Data Visualizaton Using Streamlit 👋")
+st.title("Data Visualization Using Streamlit 👋")
 st.subheader("What is Streamlit?")
 st.write("""
 - Streamlit is an open-source app framework built specifically for Machine Learning and Data Science projects.

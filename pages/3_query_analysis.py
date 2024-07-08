@@ -88,7 +88,7 @@ def createWordCloud(df_list):
 ### SECTION 1 ###
 st.subheader("Section 1: Real Time Query Collection Pipleline Explained")
 
-raw_queries_directory = '/Users/ihoonsun/Desktop/summer projects/streamlit-apps/data/queries-raw'
+raw_queries_directory = './data/queries-raw'
 
 st.write("""
 How are these Google Real-Time Trends Cluster collected?
@@ -117,7 +117,7 @@ st.write("#TO DO TMR TUES")
 ### SECTION 2 ###
 st.subheader("Section 2: Top Political Queries Every 12 hours")
 
-political_queries_directory = '/Users/ihoonsun/Desktop/summer projects/streamlit-apps/data/topQueries'
+political_queries_directory = './data/topQueries'
 
 df_list = get_df_list(political_queries_directory)
 

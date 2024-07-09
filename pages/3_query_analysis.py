@@ -4,6 +4,9 @@ import os
 from collections import Counter
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import plotly.graph_objs as go
+import json
+
 from wordcloud import WordCloud
 
 st.set_page_config(page_title="Query Analysis", page_icon="🚨")
@@ -81,14 +84,58 @@ def createWordCloud(df_list):
     return fig
 
 ### ALL QUERIES FUNCTIONS ###
+def get_date_range(directory, collectedFolder):
+    fileNames = []
+    for root, dirs, files in os.walk(os.path.join(directory,collectedFolder)):
+        for file in files:
+                if file.endswith('.csv'):
+                    fileNames.append(file.split('.csv')[0])
+    return sorted(fileNames)
 
+def agg_df(directory, collectedFolder):
+    df_list = []
+    for root, dirs, files in os.walk(os.path.join(directory,collectedFolder)):
+        for file in files:
+            if file.endswith('csv'):
+                df_temp = pd.read_csv(os.path.join(root, file), encoding='utf-8')
+                df_temp["date"] = pd.to_datetime(file.split('.csv')[0],format='%m-%d-%H')
+                df_list.append(df_temp)
+    return pd.concat(df_list) 
+
+def categorize_response(row):
+    if row['response'] < 3:
+        return 'non-political'
+    else:
+        return 'political'
+    
+def summary_statistics(df):
+    """
+    Param: 
+        df: aggregated dataframe with all raw queries
+    """
+    if st.checkbox("show Google Trends Query Cluster raw data"):
+        st.dataframe(df)
+    col1, col2 = st.columns([0.5,0.5])
+    col1.write(f"{df.shape[0]} rows, {df.shape[1]} columns")
+    df_response = df.groupby('response').size().reset_index(name='count')
+    if col2.checkbox("show table for barplot"):
+        col2.dataframe(df_response)
+    st.bar_chart(data=df_response, x="response",y="count")
+    num_of_politcal_queries = df_response[df_response["response"]==5]["count"].values[0] + 1
+    num_of_non_politcal_queries = df_response[df_response["response"]==0]["count"].values[0]
+    st.write(f"{int(round(num_of_non_politcal_queries/(num_of_non_politcal_queries+num_of_politcal_queries),2)*100)}% of the Google real-time trend clusters are non political queries, labeled by GPT")
+
+    df_date = df.copy()
+    df_date['category'] = df.apply(categorize_response, axis=1)
+    result = df_date.pivot_table(index='date', columns='category', aggfunc='size', fill_value=0).reset_index()
+    st.bar_chart(result, x="date", y=["non-political","political"], color=["#DD66E0", "#0000FF"])
 
 ###### CALL STREAMLIT FUNCTIONS ######
 
 ### SECTION 1 ###
 st.subheader("Section 1: Real Time Query Collection Pipleline Explained")
 
-raw_queries_directory = './data/queries-raw'
+raw_queries_directory = './data/gpt'
 
 st.write("""
 How are these Google Real-Time Trends Cluster collected?
@@ -107,12 +154,22 @@ A score of 0 indicates no relation, while a score of 5 signifies a very strong c
 if st.checkbox("show training/validation data used for finetuning"):
     st.caption('Since GPT 3.5 labeling results were already satifactory, our finetuning purpose was soley to specify the output format. Thus the training dataset size was not large.')
     df_train = pd.read_csv(os.path.join(raw_queries_directory,'train.csv'))
-    df_train.rename(columns={"relevance_jo":"manual_labels"})
+    df_train.rename(columns={"relevance_jo":"manual_labels"},inplace=True)
     st.dataframe(df_train)
 
 st.divider()
 st.write("Then, we needed a second finetuned model to summarized the Google Real-Time Trends clusters into a short query that mimics typical user search behavior.")
-st.write("#TO DO TMR TUES")
+st.write("This is the caption we used for this second GPT finetuning task:")
+st.caption("""
+Given a list of keywords and phrases related to recent news events, 
+generate a concise search query that encapsulates the main topics of each list. 
+The query should be less than five words and accurately reflect the core elements of the events listed. 
+The query should be general enough for internet users seeking information on these topics
+""")
+if st.checkbox("show some examples"):
+    df_example = pd.read_csv('./data/topQueries/topQueries@07-04-12.csv')
+    df_example.rename(columns={"raw-group":"Google Real-Time Trends Cluster", "summarized-query":"paraphrased query"}, inplace=True)
+    st.dataframe(df_example.head(10)[["Google Real-Time Trends Cluster","paraphrased query"]])
 
 ### SECTION 2 ###
 st.subheader("Section 2: Top Political Queries Every 12 hours")
@@ -140,7 +197,27 @@ While observing the data visualizaitons, I realized that there was an error in t
 failed to address the problem taht the sliding window constantly changes the first occurance of the query... modified the query so that it is robust against the sliding window. 
 """)
 
+### SECTION 3 ###
+st.subheader("Section 3: What are these political queries, and how accurate are they?")
+
+if st.checkbox("show clustering results"):
+    df_cluster = pd.read_csv('clusters.csv')
+    st.write(df_cluster[['cluster','queries']])
+
+with open("plotly_fig.json", "r") as f:
+    fig_json = json.load(f)
+fig = go.Figure(data=fig_json['data'], layout=fig_json['layout'])
+st.plotly_chart(fig)
+
+
 word_cloud = createWordCloud(df_list)
 word_cloud
-st.write("word cloud idea from Belle")
+st.caption("word cloud idea from Belle")
 
+directory = "./data"
+date_range = get_date_range(directory, "queries-raw")
+st.write(f"Looked at data collected from {date_range[0]} to {date_range[-1]}")
+
+agg_df_info = agg_df(directory, "queries-raw")
+df = agg_df(directory, "queries-raw")
+summary_statistics(df)
